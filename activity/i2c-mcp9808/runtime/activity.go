@@ -1,7 +1,7 @@
 package mcp9808
 
 import (
-	
+	"log"
 	"github.com/TIBCOSoftware/flogo-lib/flow/activity"
 	"github.com/op/go-logging"
 	"github.com/d2r2/go-i2c"
