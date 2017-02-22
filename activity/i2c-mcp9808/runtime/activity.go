@@ -2,6 +2,7 @@ package mcp9808
 
 import (
 	"fmt"
+	"log"
 	"github.com/TIBCOSoftware/flogo-lib/flow/activity"
 	"github.com/op/go-logging"
 	"github.com/d2r2/go-i2c"
@@ -58,8 +59,8 @@ func (a *I2CActivity) Eval(context activity.Context) (done bool, err error) {
 		log.Fatal(err)
 	}
 	
-	msg := fmt.Sprintf("%f", float32(t&0x0FFF)/float32(16))
-	context.SetOutput(msg, 0)
+	contect.SetOutput(result, float32(t&0x0FFF)/float32(16),0)
+	//context.SetOutput(float32(t&0x0FFF)/float32(16), 0)	
 	return true, nil
 	
 }
