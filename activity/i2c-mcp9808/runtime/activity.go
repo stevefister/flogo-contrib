@@ -58,8 +58,10 @@ func (a *I2CActivity) Eval(context activity.Context) (done bool, err error) {
 		log.Fatal(err)
 	}
 	
-	result = fmt.Printf("%f", float32(t&0x0FFF)/float32(16))
-	context.SetOutput(result, 0)
+	msg := message
+	
+	msg = fmt.Sprintf("%f", float32(t&0x0FFF)/float32(16))
+	context.SetOutput(msg, 0)
 	return true, nil
 	
 }
