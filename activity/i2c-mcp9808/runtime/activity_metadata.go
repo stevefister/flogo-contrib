@@ -5,7 +5,7 @@ var jsonMetadata = `{
   "version": "0.0.1",
   "title": "Read MCP9808",
   "description": "Read Temperature from MCP9808",
-  "homepage": "https://github.com/TIBCOSoftware/flogo-contrib/tree/master/activity/i2c-mcp9808",
+  "homepage": "https://github.com/stevefister/flogo-contrib/activity/i2c-mcp9808",
 
   "inputs":[
     {
