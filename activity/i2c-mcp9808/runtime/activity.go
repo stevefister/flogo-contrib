@@ -16,7 +16,7 @@ const (
 	RegTemp  = 0x05
 	RegManu  = 0x06
 	RegDevID = 0x07
-	result   = "result"
+	regResult   = "result"
 )
 
 type I2CActivity struct {
@@ -60,7 +60,7 @@ func (a *I2CActivity) Eval(context activity.Context) (done bool, err error) {
         
 	val := float32(t&0x0FFF)/float32(16)
 	val2 := val * 9.0 / 5.0 + 32
-	context.SetOutput(result, val2)
+	context.SetOutput(regResult, val2)
 	//context.SetOutput(result, string(float32(t&0x0FFF)/float32(16)))	
 	return true, nil
 	
