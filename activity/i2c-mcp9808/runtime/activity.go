@@ -1,7 +1,7 @@
 package mcp9808
 
 import (
-
+	"strconv"
 	"github.com/TIBCOSoftware/flogo-lib/flow/activity"
 	"github.com/op/go-logging"
 	"github.com/d2r2/go-i2c"
@@ -58,7 +58,7 @@ func (a *I2CActivity) Eval(context activity.Context) (done bool, err error) {
 		log.Fatal(err)
 	}
         
-	val := string(float32(t&0x0FFF)/float32(16))
+	val := strconv.FormatFloat(float32(t&0x0FFF)/float32(16), 'E', -1, 32) 
 	context.SetOutput(result, val)
 	//context.SetOutput(result, string(float32(t&0x0FFF)/float32(16)))	
 	return true, nil
