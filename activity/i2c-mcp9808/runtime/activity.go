@@ -59,7 +59,6 @@ func (a *I2CActivity) Eval(context activity.Context) (done bool, err error) {
 	}
         
 	val := float32(t&0x0FFF)/float32(16)
-	val := strconv.FormatFloat(val, 'E', -1, 64)
 	context.SetOutput(result, val)
 	//context.SetOutput(result, string(float32(t&0x0FFF)/float32(16)))	
 	return true, nil
