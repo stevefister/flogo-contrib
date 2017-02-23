@@ -7,7 +7,9 @@ var jsonMetadata = `{
   "description": "Read Temperature from MCP9808",
   "homepage": "https://github.com/stevefister/flogo-contrib/activity/i2c-mcp9808",
 
- 
+  "inputs":[
+    
+  ],
   "outputs": [
     {
       "name": "result",
