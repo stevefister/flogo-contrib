@@ -1,10 +1,10 @@
 # i2c-mcp9808
-This activity provides your flogo application the ability to read MCP9808 temp sensor on Raspberry Pi
+This activity provides your flogo application the ability to read MCP9808 temp sensor on Raspberry Pi (3)
 
 ## Installation
 
 ```bash
-flogo add activity github.com/TIBCOSoftware/flogo-contrib/activity/i2c-mcp9808
+flogo add activity github.com/stevefister/flogo-contrib/activity/i2c-mcp9808
 ```
 
 ## Schema
@@ -12,89 +12,18 @@ Inputs and Outputs:
 
 ```json
 {
-  "inputs":[
-    {
-      "name": "method",
-      "type": "string",
-      "required": true,
-      "allowed" : ["Direction", "Read State", "Pull"]
-    },
-    {
-      "name": "pinNumber",
-      "type": "integer",
-      "required": true
-    },
-    {
-      "name": "direction",
-      "type": "string",
-      "allowed" : ["Input", "Output"]
-    },
-    {
-      "name": "state",
-      "type": "string",
-      "allowed" : ["High", "Low"]
-    },
-
-    {
-      "name": "Pull",
-      "type": "string",
-      "allowed" : ["Up", "Down", "Off"]
-    }
-  ],
+  "inputs":[ ],
   "outputs": [
     {
       "name": "result",
-      "type": "float"
+      "type": "string"
     }
   ]
 }
 ```
-## Settings
-| Setting     | Description    |
-|:------------|:---------------|
-| method      | The method to take action for GPIO|         
-| pinNumber   | The pin number   |
-| direction   | The direction of pin number, either Input or Output |
-| state       | The state of pin number, either high or low |
-| Pull        | Pull the pin number to Up, Down and Off |
 
+## Configuration Information
+### MCP9808 is Output Only
+The MCP9808 uses Bus 1 on the Raspberry Pi 3. The Default address is 0x18.
+Wiring used: VDD, GND, SCL, SDA. See https://learn.adafruit.com/mcp9808-temperature-sensor-python-library/hardware for pinouts.
 
-## Configuration Examples
-### Get pin state
-Get specific pin 23's state
-```json
-  "attributes": [
-          {
-            "name": "method",
-            "value": "Read State",
-            "type": "string"
-          },
-          {
-            "name": "pinNumber",
-            "value": "23",
-            "type": "integer"
-          }
-        ]
-```
-
-### Change pin's direction
-Change pin's direction to Output
-```json
-  "attributes": [
-          {
-            "name": "method",
-            "value": "Direction",
-            "type": "string"
-          },
-          {
-            "name": "pinNumber",
-            "value": "23",
-            "type": "integer"
-          },
-          {
-            "name": "direction",
-            "value": "Output",
-            "type": "string"
-          }
-        ]
-```
