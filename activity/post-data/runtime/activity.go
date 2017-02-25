@@ -1,7 +1,12 @@
 package postdata
 
 import (
+	"encoding/json"
+	"io"
+	"io/ioutil"
 	"net/http"
+	"net/url"
+	"strings"
 	"github.com/TIBCOSoftware/flogo-lib/flow/activity"
 	"github.com/op/go-logging"
 )
