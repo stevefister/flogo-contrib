@@ -1,7 +1,6 @@
 package postdata
 
 import (
-	"encoding/json"
 	"io"
 	"io/ioutil"
 	"net/http"
