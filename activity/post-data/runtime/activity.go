@@ -48,11 +48,11 @@ func (a *PostActivity) Eval(context activity.Context) (done bool, err error) {
 
          resp, err := http.Post(uri, "text/plain", strings.NewReader(urlData.Encode()))
 
-         //if err != nil {
-         //        fmt.Println(err)
-        // }
+         if err != nil {
+                 fmt.Println(err)
+          }
 
-         //fmt.Println("Status : ", resp.Status)
+         fmt.Println("Status : ", resp.Status)
 
 	context.SetOutput(ovResult, resp.Status)
 
