@@ -44,7 +44,7 @@ func (a *PostActivity) Eval(context activity.Context) (done bool, err error) {
 	 
 	 urlData := url.Values{}
          urlData.Set("temp", ivData)
-         uri := ivURLI + "?temp="
+         uri := ivURI + "?temp="
 
          resp, err := http.Post(uri, "text/plain", strings.NewReader(urlData.Encode()))
 
