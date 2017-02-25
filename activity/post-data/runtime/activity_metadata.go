@@ -19,11 +19,6 @@ var jsonMetadata = `{
       "required": "true"
     },
     {
-      "name": "port",
-      "type": "string",
-      "required": "true"
-    },
-    {
       "name": "data",
       "type": "string"
     }

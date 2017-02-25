@@ -16,7 +16,7 @@ const (
 	methodPost = "POST"
 	
 	ivURI     = "uri"
-	ivPort    = "port"
+	//ivPort    = "port"
 	ivMethod  = "method"
 	ivData    = "data"
 	
@@ -45,16 +45,13 @@ func (a *PostActivity) Eval(context activity.Context) (done bool, err error) {
 	
 	method := strings.ToUpper(context.GetInput(ivMethod).(string))
 	uri := context.GetInput(ivURI).(string)
-	port := context.GetInput(ivPort).(string)
+	//port := context.GetInput(ivPort).(string)
 
 	log.Debugf("HTTP Post [%s] %s\n", method, uri)
 	
 	var reqBody io.Reader
-
 	
-	
-	
-	req, err := http.NewRequest(method, uri:port, reqBody)
+	req, err := http.NewRequest(method, uri, reqBody)
 	if reqBody != nil {
 		req.Header.Set("Content-Type", "text/plain")
 	}
