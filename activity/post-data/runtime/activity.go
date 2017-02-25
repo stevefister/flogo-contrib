@@ -54,7 +54,7 @@ func (a *PostActivity) Eval(context activity.Context) (done bool, err error) {
 
          //fmt.Println("Status : ", resp.Status)
 
-	//context.SetOutput(ovResult, result)
+	context.SetOutput(ovResult, resp.Status)
 
 	return true, nil
 	
