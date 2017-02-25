@@ -54,7 +54,7 @@ func (a *PostActivity) Eval(context activity.Context) (done bool, err error) {
 	
 	
 	
-	req, err := http.NewRequest(method, uri, reqBody)
+	req, err := http.NewRequest(method, uri:port, reqBody)
 	if reqBody != nil {
 		req.Header.Set("Content-Type", "text/plain")
 	}
