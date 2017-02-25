@@ -1,10 +1,9 @@
 package postdata
 
 import (
-	"io"
-	"io/ioutil"
 	"net/http"
-	"strings"
+         "net/url"
+         "strings"
 	"github.com/TIBCOSoftware/flogo-lib/flow/activity"
 	"github.com/op/go-logging"
 )
@@ -13,14 +12,14 @@ import (
 var log = logging.MustGetLogger("activity-tibco-post-data")
 
 const (
-	methodPost = "POST"
+	//methodPost = "POST"
 	
 	ivURI     = "uri"
 	//ivPort    = "port"
-	ivMethod  = "method"
+	//ivMethod  = "method"
 	ivData    = "data"
 	
-	ovResult  = "result"
+	//ovResult  = "result"
 )
 
 var validMethods = []string{methodPost}
@@ -42,43 +41,20 @@ func (a *PostActivity) Metadata() *activity.Metadata {
 
 func (a *PostActivity) Eval(context activity.Context) (done bool, err error) {
 	
-	
-	method := strings.ToUpper(context.GetInput(ivMethod).(string))
-	uri := context.GetInput(ivURI).(string)
-	//port := context.GetInput(ivPort).(string)
+	 
+	 urlData := url.Values{}
+         urlData.Set("temp", data)
+         uri := uri + "?temp="
 
-	log.Debugf("HTTP Post [%s] %s\n", method, uri)
-	
-	var reqBody io.Reader
-	
-	req, err := http.NewRequest(method, uri, reqBody)
-	if reqBody != nil {
-		req.Header.Set("Content-Type", "text/plain")
-	}
+         resp, err := http.Post(uri, "text/plain", strings.NewReader(urlData.Encode()))
 
-	client := &http.Client{}
-	resp, err := client.Do(req)
-	if err != nil {
-		panic(err)
-	}
-	defer resp.Body.Close()
+         //if err != nil {
+         //        fmt.Println(err)
+        // }
 
-	log.Debug("response Status:", resp.Status)
-	respBody, _ := ioutil.ReadAll(resp.Body)
+         //fmt.Println("Status : ", resp.Status)
 
-	var result interface{}
-
-	//d := json.NewDecoder(bytes.NewReader(respBody))
-	//d.UseNumber()
-	//err = d.Decode(&result)
-
-	//json.Unmarshal(respBody, &result)
-
-	if log.IsEnabledFor(logging.DEBUG) {
-		log.Debug("response Body:", result)
-	}
-
-	context.SetOutput(ovResult, result)
+	//context.SetOutput(ovResult, result)
 
 	return true, nil
 	

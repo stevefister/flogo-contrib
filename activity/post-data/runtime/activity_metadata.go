@@ -8,11 +8,7 @@ var jsonMetadata = `{
   "homepage": "https://github.com/stevefister/flogo-contrib/activity/post-data",
 
    "inputs":[
-    {
-      "name": "method",
-      "type": "string",
-      "required": "true"
-    },
+    
     {
       "name": "uri",
       "type": "string",
@@ -24,11 +20,5 @@ var jsonMetadata = `{
     }
     
   ],
-  "outputs": [
-    {
-      "name": "result",
-      "type": "any"
-    }
-  
-  ]
+  "outputs": [ ]
 }`
