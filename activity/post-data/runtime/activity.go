@@ -5,7 +5,6 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
-	"net/url"
 	"strings"
 	"github.com/TIBCOSoftware/flogo-lib/flow/activity"
 	"github.com/op/go-logging"
@@ -25,7 +24,7 @@ const (
 	ovResult  = "result"
 )
 
-var validMethods = []string{methodPOST}
+var validMethods = []string{methodPost}
 
 type PostActivity struct {
 	metadata *activity.Metadata
@@ -53,9 +52,9 @@ func (a *PostActivity) Eval(context activity.Context) (done bool, err error) {
 	
 	var reqBody io.Reader
 
-	if method == methodPOST {
+	if method == methodPost {
 
-		content := context.GetInput(ivData)
+		data := context.GetInput(ivData)
 		if context != nil {
 			if str, ok := data.(string); ok {
 				reqBody = bytes.NewBuffer([]byte(str))
