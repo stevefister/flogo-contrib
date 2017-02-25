@@ -22,7 +22,7 @@ const (
 	//ovResult  = "result"
 )
 
-var validMethods = []string{methodPost}
+//var validMethods = []string{methodPost}
 
 type PostActivity struct {
 	metadata *activity.Metadata
@@ -43,8 +43,8 @@ func (a *PostActivity) Eval(context activity.Context) (done bool, err error) {
 	
 	 
 	 urlData := url.Values{}
-         urlData.Set("temp", data)
-         uri := uri + "?temp="
+         urlData.Set("temp", ivData)
+         uri := ivURLI + "?temp="
 
          resp, err := http.Post(uri, "text/plain", strings.NewReader(urlData.Encode()))
 
