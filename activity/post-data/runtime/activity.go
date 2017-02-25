@@ -52,17 +52,7 @@ func (a *PostActivity) Eval(context activity.Context) (done bool, err error) {
 	
 	var reqBody io.Reader
 
-	if method == methodPost {
-
-		data := context.GetInput(ivData)
-		if context != nil {
-			if str, ok := data.(string); ok {
-				reqBody = bytes.NewBuffer([]byte(str))
-			} 
-		}
-	} else {
-		reqBody = nil
-	}
+	
 	
 	
 	req, err := http.NewRequest(method, uri, reqBody)
