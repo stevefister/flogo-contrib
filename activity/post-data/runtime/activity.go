@@ -44,7 +44,7 @@ func (a *PostActivity) Eval(context activity.Context) (done bool, err error) {
 	uri := context.GetInput(ivURI).(string)
 	port := context.GetInput(ivPort).(string)
 
-	log.Debugf("HTTP Post\: [%s] %s\n", method, uri)
+	log.Debugf("HTTP Post [%s] %s\n", method, uri)
 	
 	var reqBody io.Reader
 
