@@ -24,11 +24,6 @@ Inputs and Outputs:
       "required": "true"
     },
     {
-      "name": "port",
-      "type": "string",
-      "required": "true"
-    },
-    {
       "name": "data",
       "type": "string"
     }
