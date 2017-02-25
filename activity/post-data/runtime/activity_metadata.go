@@ -1,4 +1,4 @@
-package post-data
+package postdata
 
 var jsonMetadata = `{
   "name": "postdata",
