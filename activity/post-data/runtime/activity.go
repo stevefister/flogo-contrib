@@ -43,8 +43,6 @@ func (a *PostActivity) Eval(context activity.Context) (done bool, err error) {
 	method := strings.ToUpper(context.GetInput(ivMethod).(string))
 	uri := context.GetInput(ivURI).(string)
 	port := context.GetInput(ivPort).(string)
-	urlData := url.Values{}
-	urlData.Set("data", url:port)
 
 	log.Debugf("HTTP Post: [%s] %s\n", method, uri)
 	
@@ -56,10 +54,7 @@ func (a *PostActivity) Eval(context activity.Context) (done bool, err error) {
 		if context != nil {
 			if str, ok := data.(string); ok {
 				reqBody = bytes.NewBuffer([]byte(str))
-			} else {
-				b, _ := json.Marshal(data) //todo handle error
-				reqBody = bytes.NewBuffer([]byte(b))
-			}
+			} 
 		}
 	} else {
 		reqBody = nil
