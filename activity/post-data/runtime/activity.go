@@ -1,9 +1,10 @@
 package postdata
 
 import (
+	"fmt"
 	"net/http"
-         "net/url"
-         "strings"
+        "net/url"
+        "strings"
 	"github.com/TIBCOSoftware/flogo-lib/flow/activity"
 	"github.com/op/go-logging"
 )
