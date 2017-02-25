@@ -19,7 +19,7 @@ const (
 	//ivMethod  = "method"
 	ivData    = "data"
 	
-	//ovResult  = "result"
+	ovResult  = "result"
 )
 
 //var validMethods = []string{methodPost}
