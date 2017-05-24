@@ -3,13 +3,13 @@ package mcp9808
 import (
 	"strings"
 	"github.com/TIBCOSoftware/flogo-lib/flow/activity"
-	"github.com/op/go-logging"
+	"github.com/TIBCOSoftware/flogo-lib/logger"
 	"errors"
 	"github.com/d2r2/go-i2c"
 )
 
 // log is the default package logger
-var log = logging.MustGetLogger("activity-tibco-rest")
+var log = logger.GetLogger("activity-tibco-rest")
 
 const (
 	Addr     = 0x18

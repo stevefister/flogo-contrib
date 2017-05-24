@@ -1,5 +1,5 @@
 {
   "name": "mcp9808",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "Read Temperature from MCP9808"
 }

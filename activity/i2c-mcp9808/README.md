@@ -26,4 +26,3 @@ Inputs and Outputs:
 ### MCP9808 is Output Only
 The MCP9808 uses Bus 1 on the Raspberry Pi 3. The Default address is 0x18.
 Wiring used: VDD, GND, SCL, SDA. See https://learn.adafruit.com/mcp9808-temperature-sensor-python-library/hardware for pinouts.
-

@@ -5,33 +5,32 @@ import (
 
 	"github.com/TIBCOSoftware/flogo-lib/flow/activity"
 	"github.com/TIBCOSoftware/flogo-lib/flow/test"
+	"io/ioutil"
 )
 
-func TestRegistered(t *testing.T) {
-	act := activity.Get("i2c-mcp9808")
+var activityMetadata *activity.Metadata
+
+func getActivityMetadata() *activity.Metadata {
+
+	if activityMetadata == nil {
+		jsonMetadataBytes, err := ioutil.ReadFile("activity.json")
+		if err != nil{
+			panic("No Json Metadata found for activity.json path")
+		}
+
+		activityMetadata = activity.NewMetadata(string(jsonMetadataBytes))
+	}
+
+	return activityMetadata
+}
+
+func TestCreate(t *testing.T) {
+
+	act := NewActivity(getActivityMetadata())
 
 	if act == nil {
-		t.Error("Activity Not Registered")
+		t.Error("Activity Not Created")
 		t.Fail()
 		return
 	}
-}
-
-func TestReadState(t *testing.T) {
-
-	act := activity.Get("i2c-mcp9808")
-
-	tc := test.NewTestActivityContext(act.Metadata())
-
-	//setup attrs
-	tc.SetInput("method", "Read State")
-	tc.SetInput("pin number", 3)
-	//eval
-	_, err := act.Eval(tc)
-	if err != nil {
-		log.Errorf("Error occured: %+v", err)
-	}
-	val := tc.GetOutput("result")
-	log.Debugf("Resut %s", val)
-
 }
