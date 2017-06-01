@@ -2,14 +2,15 @@ package mcp9808
 
 import (
 
+	"strconv"
 	"github.com/TIBCOSoftware/flogo-lib/flow/activity"
-	"github.com/TIBCOSoftware/flogo-lib/logger"
+	"github.com/op/go-logging"
 	"errors"
 	"github.com/d2r2/go-i2c"
 )
 
 // log is the default package logger
-var log = logger.GetLogger("activity-tibco-rest")
+var log = logging.MustGetLogger("activity-tibco-rest")
 
 const (
 	Addr     = 0x18
@@ -17,6 +18,7 @@ const (
 	RegTemp  = 0x05
 	RegManu  = 0x06
 	RegDevID = 0x07
+	result   = "result"
 )
 
 type I2CActivity struct {
@@ -57,5 +59,9 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	return float32(t&0x0FFF) / float32(16), nil
+	val := float32(t&0x0FFF)/float32(16)
+  	val2 := val * 9.0 / 5.0 + 32
+  	context.SetOutput(regResult, strconv.FormatFloat(float64(val2), 'f', 1, 32))
+ 	
+  	return true, nil
 }
