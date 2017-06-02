@@ -1,7 +1,7 @@
-package i2c-mcp9808
+package mcp9808
 
 var jsonMetadata = `{
-  "name": "i2c-mcp9808",
+  "name": "mcp9808",
   "version": "0.0.1",
   "title": "Read MCP9808",
   "description": "Read Temperature from MCP9808",

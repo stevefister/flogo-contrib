@@ -1,4 +1,4 @@
-package i2c-mcp9808
+package mcp9808
 
 import (
 	"testing"
