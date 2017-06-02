@@ -35,7 +35,8 @@ func (a *I2CActivity) Metadata() *activity.Metadata {
 	return a.metadata
 }
 
-func main() {
+func (a *I2CActivity) Eval(context activity.Context) (done bool, err error) {
+	
 	i, err := i2c.NewI2C(Addr, Bus)
 	if err != nil {
 		log.Fatal(err)
